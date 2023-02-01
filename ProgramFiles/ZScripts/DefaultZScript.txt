@@ -1,8 +1,6 @@
 //startup
 
-[If,[MemGetSize,startup_mem],
-	[IPress,"Zplugin:Misc Utilities:Home Page"]
-	,
-	[MVarDef,startup_mem,1,0]
-	[IPress,"Zplugin:Misc Utilities:Home Page"]
-]
+
+
+[pd]
+ 
