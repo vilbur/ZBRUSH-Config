@@ -1,0 +1,52 @@
+
+
+
+
+//[VarSet, $plugin_path, ""]
+[VarSet, $plugin_path, "~VIL-PLUGINS:Mask By Alpha:"]
+
+//[ISubPalette, "~VIL-PLUGINS:Mask By Alpha"]
+
+
+[RoutineDef, MaskByAlpha
+,
+
+	[VarSet, $current_alpha, [IGetTitle, ALPHA:ItemInfo]]
+	[VarSet, $current_alpha_id, [IGet, ALPHA:ItemInfo]]
+
+	//[Note, $current_alpha_id]
+	//[Note,  [StrLength,$current_alpha_id]]
+
+
+
+	[IPress, [StrMerge, "Alpha:Alpha ", $alpha_id]]
+
+	[IPress,Tool:Masking:Mask By Alpha]
+	[IPress,Tool:Masking:ViewMask]
+
+	[If,  [StrLength,$current_alpha_id] > 1,
+		[IPress,  [StrMerge, "Alpha:Alpha ", $current_alpha_id ]]
+	,
+		[IPress,  [StrMerge, "Alpha:Alpha ", "0" , $current_alpha_id]]
+	]
+
+
+, // PARAMS
+	$alpha_id
+] // END MaskByAlpha
+
+
+
+
+[IButton, [StrMerge, $plugin_path, "Mask 01"], "", [RoutineCall, MaskByAlpha, "01"],,56,,,48]
+[IButton, [StrMerge, $plugin_path, "Mask 02"], "", [RoutineCall, MaskByAlpha, "02"],,56,,,48]
+[IButton, [StrMerge, $plugin_path, "Mask 03"], "", [RoutineCall, MaskByAlpha, "03"],,56,,,48]
+[IButton, [StrMerge, $plugin_path, "Mask 04"], "", [RoutineCall, MaskByAlpha, "04"],,56,,,48]
+[IButton, [StrMerge, $plugin_path, "Mask 05"], "", [RoutineCall, MaskByAlpha, "05"],,56,,,48]
+[IButton, [StrMerge, $plugin_path, "Mask 06"], "", [RoutineCall, MaskByAlpha, "06"],,56,,,48]
+[IButton, [StrMerge, $plugin_path, "Mask 07"], "", [RoutineCall, MaskByAlpha, "07"],,56,,,48]
+[IButton, [StrMerge, $plugin_path, "Mask 08"], "", [RoutineCall, MaskByAlpha, "08"],,56,,,48]
+[IButton, [StrMerge, $plugin_path, "Mask 09"], "", [RoutineCall, MaskByAlpha, "09"],,56,,,48]
+
+
+
