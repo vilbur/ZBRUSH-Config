@@ -1,0 +1,15 @@
+
+[IConfig,4.6]
+
+
+[If, ! [IExists, "~VIL-PLUGINS"],[IPalette, "~VIL-PLUGINS"]]
+
+
+[ISubPalette, "~VIL-PLUGINS:Load-Plugins"]
+
+
+[IButton, "~VIL-PLUGINS:Load-Plugins:MaskByAplha Load", "Load MaskByAlpha script",
+   [FileNameSetNext,"c:\GoogleDrive\ProgramsData\CG\ZBrush\ProgramFiles\ZStartup\ZPlugs64\MaskByAlpha.txt"]
+   //[FileNameSetNext,"c:\GoogleDrive\ProgramsData\CG\ZBrush\ProgramFiles\ZScripts\MaskByAlpha.txt"]
+   [IPress,ZScript:Load]
+]

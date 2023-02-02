@@ -13,7 +13,12 @@
   *	Path will be replace by paths
   *
   */
-$source_paths := [ "ProgramFiles/ZScripts", "ProgramFiles/ZStartup/ZPlugs64", "AppData/ZStartup"  ]
+$source_paths := [ "ProgramFiles/ZScripts"
+				  ,"AppData/ZStartup"
+				  ,"ProgramFiles/ZStartup/ZPlugs64/UI-Labels.zsc"
+				  ,"ProgramFiles/ZStartup/ZPlugs64/Load-Plugins.zsc"  ]
+
+
 
 
 
@@ -69,6 +74,11 @@ createHardlinks( $path_source, $path_link_target )
 			else
 				FileCopy, % $path_link_target, % $path_target_bak
 		}
+
+
+
+		FileRemoveDir, $path_link_target, 1
+
 
 		$file_or_folder	:= $is_folder ? "/d" : ""
 
