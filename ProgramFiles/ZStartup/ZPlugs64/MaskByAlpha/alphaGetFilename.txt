@@ -1,7 +1,7 @@
 /** TestResult
   *
   */
-[RoutineDef, getAlphaFilename
+[RoutineDef, alphaListPath
 ,
 	//[VarSet, $filename, [StrMerge, "/Alpha-List/", "alpha_", $alpha_id, ".zvr"]]
 	[VarSet, $filename, [StrMerge, "Alpha-List\\", "alpha_", $alpha_id, ".zvr"]]
@@ -9,4 +9,4 @@
 , // PARAMS
 	$alpha_id, $filename
 ] // END TestResult
-//[ IButton, "getAlphaFilename()" , "", [VarDef, $filename, "Init Value"] [RoutineCall, getAlphaFilename, 2, $filename] [Note, $filename] ]
+//[ IButton, "alphaListPath()" , "", [VarDef, $filename, "Init Value"] [RoutineCall, alphaListPath, 2, $filename] [Note, $filename] ]

@@ -10,7 +10,7 @@
 	[VarSet, $current_alpha_id,	[IGet,	ALPHA:ItemInfo] ]
 	[VarSet, $current_alpha_name,	[IGetTitle,	Alpha:Current Alpha] ]
 
-	[RoutineCall, getAlphaFilename, $current_alpha_id, $filename]
+	[RoutineCall, alphaListPath, $current_alpha_id, $filename]
 
 	//[Note, $current_alpha_id]
 	//[Note, $current_alpha_name]

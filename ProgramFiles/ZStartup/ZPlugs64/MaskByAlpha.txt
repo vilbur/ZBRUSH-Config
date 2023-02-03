@@ -1,19 +1,21 @@
 
 
-//[VarSet, $plugin_path, ""]
+[VarDef, $ALPHA_LIST_FOLDER, "Alpha-List"]
+
+[VarSet, $ZFILE_UTILS_DLL, "ZFileUtils64.dll"]
+
 [VarSet, $PLUGIN_PATH, "~VIL-PLUGINS:Mask By Alpha:"]
 
 [ISubPalette, "~VIL-PLUGINS:Mask By Alpha"]
 
-[VarDef, $alphas_count, 2]
-
-
-
-<zscriptinsert, "MaskByAlpha\applyAlpha.txt">
-<zscriptinsert, "MaskByAlpha\alphaGetFilename.txt">
+<zscriptinsert, "MaskByAlpha\initAlphaListFolder.txt">
+<zscriptinsert, "MaskByAlpha\alphaApply.txt">
+<zscriptinsert, "MaskByAlpha\alphaListPath.txt">
 <zscriptinsert, "MaskByAlpha\saveCurrentAlpha.txt">
 <zscriptinsert, "MaskByAlpha\alphaToMask.txt">
 <zscriptinsert, "MaskByAlpha\maskToAlpha.txt">
-<zscriptinsert, "MaskByAlpha\loadMask.txt">
-
+<zscriptinsert, "MaskByAlpha\maskLoad.txt">
 <zscriptinsert, "MaskByAlpha\UI.txt">
+
+
+[RoutineCall, initAlphaListFolder ]
