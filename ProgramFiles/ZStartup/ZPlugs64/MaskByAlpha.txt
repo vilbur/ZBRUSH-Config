@@ -1,52 +1,210 @@
-
-
-
-
 //[VarSet, $plugin_path, ""]
 [VarSet, $plugin_path, "~VIL-PLUGINS:Mask By Alpha:"]
 
 //[ISubPalette, "~VIL-PLUGINS:Mask By Alpha"]
 
 
-[RoutineDef, MaskByAlpha
-,
 
-	[VarSet, $current_alpha, [IGetTitle, ALPHA:ItemInfo]]
-	[VarSet, $current_alpha_id, [IGet, ALPHA:ItemInfo]]
+
+[RoutineDef, saveToMemory,
+
+
+	//[VarDef,test_a(5),""]
+	//[VarSet,test_a(0),"value 1"]
+	//[VarSet,test_a(0),"value 2"]
+	//[VarSet,test_a(0),"value 3"]
+
+	//[If, [IGet, ALPHA:ItemInfo]
+	//, // THEN
+	//	[VarSet, $filename, [StrMerge, "alpha_", [IGet, ALPHA:ItemInfo], ".zvr"]]
+	//	//[VarSet, $filename, "current_alpha.zvr"]
+	//
+	//	[VarDef, $alpha_name, [IGetTitle, Alpha: Current Alpha] ]
+	//
+	//	[VarSave, $alpha_name, $filename ]
+	//, // ELSE
+	//	[Note, "Alpha is not defined"]
+	//]
+
+	//[StrMerge, "alpha_", "test" ]
+
+
+
+	//[VarDef,test_b, ""]
+	//[VarSet,test_b, "Test B"]
+	//[VarSave,test_b,"saveVarTest.zvr"]
+
+	//[Note, tempText]
+
+	//[If, ! [MemGetSize, mem_test], [MVarDef, mem_test(99),"X"]]
+	//
+	//
+	////[If, ! [MemGetSize, mem_test], [MVarDef, mem_test,99,0]]
+	//
+	//[MVarSet, mem_test, 1, 44 ]
+	////
+	////[Note, [MVarGet, mem_test, 1] ]
+	//[Note, mem_test(1) ]
+
+
+] // END MaskByAlpha
+
+//[IButton, "Save alpha", "", [ RoutineCall, saveToMemory],,,,,48]
+
+
+///** getCurrentAplha
+//  *
+//  */
+//[RoutineDef, getCurrentAplha
+//,
+//	[VarDef, $current_alpha_id ]
+//	[VarDef, $current_alpha_name, "" ]
+//
+//	[VarSet, $current_alpha_id,	[IGet,	ALPHA:ItemInfo] ]
+//	[VarSet, $current_alpha_name,	[IGetTitle,	Alpha:Current Alpha] ]
+//
+//	[Note, $current_alpha_id]
+//	[Note, $current_alpha_name]
+//
+//] // END getCurrentAplha()
+//[ IButton, "getCurrentAplha()" , "", [RoutineCall, getCurrentAplha] ]
+
+
+/** Apply Alpha by name
+  *
+  */
+[RoutineDef, ApplyAlpha
+,
+	[IPress,  [StrMerge, "Alpha: ", $alpha_name]]
+, // PARAMS
+	$alpha_name
+] // END Apply Alpha
+//[ IButton, "Apply Alpha()" , "", [RoutineCall, ApplyAlpha, "Alpha 01"] ]
+
+/** TestResult
+  *
+  */
+[RoutineDef, getAlphaFilename
+,
+	[VarSet, $filename, [StrMerge, "/Alpha-List/", "alpha_", $alpha_id, ".zvr"]]
+, // PARAMS
+	$alpha_id, $filename
+] // END TestResult
+//[ IButton, "getAlphaFilename()" , "", [VarDef, $filename, "Init Value"] [RoutineCall, getAlphaFilename, 2, $filename] [Note, $filename] ]
+
+
+/** save current alpha name to file "alpha_{id}.zvr"
+  *
+  */
+[RoutineDef, saveCurrentAlpha,
+	//[Note, "saveCurrentAlpha"]
+	[VarDef, $filename, ""]
+	[VarDef, $current_alpha_id ]
+	[VarDef, $current_alpha_name, "" ]
+
+	[VarSet, $current_alpha_id,	[IGet,	ALPHA:ItemInfo] ]
+	[VarSet, $current_alpha_name,	[IGetTitle,	Alpha:Current Alpha] ]
+
+	[RoutineCall, getAlphaFilename, $current_alpha_id, $filename]
 
 	//[Note, $current_alpha_id]
-	//[Note,  [StrLength,$current_alpha_id]]
+	//[Note, $current_alpha_name]
+	//[Note, $filename]
+
+	[VarSave, $current_alpha_name, $filename ]
+
+] // END saveCurrentAlpha()
+//[ IButton, "saveCurrentAlpha()" , "", [RoutineCall, saveCurrentAlpha] ]
+
+/**
+  *
+  */
+[RoutineDef, alphaToMask
+,
+	[RoutineCall, saveCurrentAlpha]
+
+	[IPress,Tool:Masking:Mask By Alpha]
+
+
+] // END alphaToMask
+[IButton, "alphaToMask()", "", [RoutineCall, alphaToMask]]
+
+
+/** maskToAlpha
+  *
+  */
+[RoutineDef, maskToAlpha
+,
+	[If, [IGet, ALPHA:ItemInfo] // If Alpha exists
+	, // THEN
+		[IPress,Tool:Masking:Create Alpha]
+
+		[RoutineCall, saveCurrentAlpha]
+
+	, // ELSE
+		[Note, "Alpha is not defined"]
+	]
+] // END maskToAlpha
+[ IButton, "maskToAlpha()" , "", [RoutineCall, maskToAlpha] ]
 
 
 
-	[IPress, [StrMerge, "Alpha:Alpha ", $alpha_id]]
+/** loadMask
+  *
+  */
+[RoutineDef, loadMask
+,
+	//[VarSet, $filename, [StrMerge, "/Alpha-List/", $alpha_id, ".zvr"]]
+	[VarDef, $filename, ""]
+	[RoutineCall, getAlphaFilename, $alpha_id, $filename]
+
+	[VarLoad, $alpha_name, $filename]
+	//Note
+	//[Note, $alpha_name]
+
+	[RoutineCall, ApplyAlpha, $alpha_name]
 
 	[IPress,Tool:Masking:Mask By Alpha]
 	[IPress,Tool:Masking:ViewMask]
 
-	[If,  [StrLength,$current_alpha_id] > 1,
-		[IPress,  [StrMerge, "Alpha:Alpha ", $current_alpha_id ]]
-	,
-		[IPress,  [StrMerge, "Alpha:Alpha ", "0" , $current_alpha_id]]
-	]
-
-
 , // PARAMS
 	$alpha_id
-] // END MaskByAlpha
+] // END loadMask
+[ IButton, "loadMask(1)" , "", [RoutineCall, loadMask, 1] ]
+[ IButton, "loadMask(2)" , "", [RoutineCall, loadMask, 2] ]
+[ IButton, "loadMask(3)" , "", [RoutineCall, loadMask, 3] ]
+[ IButton, "loadMask(4)" , "", [RoutineCall, loadMask, 4] ]
+[ IButton, "loadMask(5)" , "", [RoutineCall, loadMask, 5] ]
 
 
 
 
-[IButton, [StrMerge, $plugin_path, "Mask 01"], "", [RoutineCall, MaskByAlpha, "01"],,56,,,48]
-[IButton, [StrMerge, $plugin_path, "Mask 02"], "", [RoutineCall, MaskByAlpha, "02"],,56,,,48]
-[IButton, [StrMerge, $plugin_path, "Mask 03"], "", [RoutineCall, MaskByAlpha, "03"],,56,,,48]
-[IButton, [StrMerge, $plugin_path, "Mask 04"], "", [RoutineCall, MaskByAlpha, "04"],,56,,,48]
-[IButton, [StrMerge, $plugin_path, "Mask 05"], "", [RoutineCall, MaskByAlpha, "05"],,56,,,48]
-[IButton, [StrMerge, $plugin_path, "Mask 06"], "", [RoutineCall, MaskByAlpha, "06"],,56,,,48]
-[IButton, [StrMerge, $plugin_path, "Mask 07"], "", [RoutineCall, MaskByAlpha, "07"],,56,,,48]
-[IButton, [StrMerge, $plugin_path, "Mask 08"], "", [RoutineCall, MaskByAlpha, "08"],,56,,,48]
-[IButton, [StrMerge, $plugin_path, "Mask 09"], "", [RoutineCall, MaskByAlpha, "09"],,56,,,48]
+//[IButton, "Load 1", "", [ RoutineCall, loadFromMemory,1 ],,56]
+//[IButton, "Load 2", "", [ RoutineCall, loadFromMemory,2 ],,56]
+
+//[IButton, [StrMerge, $plugin_path, "Save Current Alpha"], "", [ RoutineCall, saveCurrentAlpha ],,56]
+//[IButton, [StrMerge, $plugin_path, "Load Alpha Mask"], "", [ RoutineCall, saveCurrentAlpha ],,56]
+
+
+//[IButton, [StrMerge, $plugin_path, "Mask 01"], "", [RoutineCall, MaskByAlpha, "01"],,56,,,48]
+//[IButton, [StrMerge, $plugin_path, "Mask 02"], "", [RoutineCall, MaskByAlpha, "02"],,56,,,48]
+//[IButton, [StrMerge, $plugin_path, "Mask 03"], "", [RoutineCall, MaskByAlpha, "03"],,56,,,48]
+//[IButton, [StrMerge, $plugin_path, "Mask 04"], "", [RoutineCall, MaskByAlpha, "04"],,56,,,48]
+//[IButton, [StrMerge, $plugin_path, "Mask 05"], "", [RoutineCall, MaskByAlpha, "05"],,56,,,48]
+//[IButton, [StrMerge, $plugin_path, "Mask 06"], "", [RoutineCall, MaskByAlpha, "06"],,56,,,48]
+//[IButton, [StrMerge, $plugin_path, "Mask 07"], "", [RoutineCall, MaskByAlpha, "07"],,56,,,48]
+//[IButton, [StrMerge, $plugin_path, "Mask 08"], "", [RoutineCall, MaskByAlpha, "08"],,56,,,48]
+//[IButton, [StrMerge, $plugin_path, "Mask 09"], "", [RoutineCall, MaskByAlpha, "09"],,56,,,48]
 
 
 
+
+//[IButton, [StrMerge, $plugin_path, "Mask 01"], "", [RoutineCall, MaskByAlpha, "01"],,56,,,48]
+//[IButton, [StrMerge, $plugin_path, "Mask 02"], "", [RoutineCall, MaskByAlpha, "02"],,56,,"c:\Program Files\Pixologic\ZBrush 2022\ZData\Alphas\Brush 02.PSD",48]
+//[IButton, [StrMerge, $plugin_path, "Mask 03"], "", [RoutineCall, MaskByAlpha, "03"],,56,,"c:\Program Files\Pixologic\ZBrush 2022\ZData\Alphas\Brush 03.PSD",48]
+//[IButton, [StrMerge, $plugin_path, "Mask 04"], "", [RoutineCall, MaskByAlpha, "04"],,56,,"c:\Program Files\Pixologic\ZBrush 2022\ZData\Alphas\Brush 04.PSD",48]
+//[IButton, [StrMerge, $plugin_path, "Mask 05"], "", [RoutineCall, MaskByAlpha, "05"],,56,,"c:\Program Files\Pixologic\ZBrush 2022\ZData\Alphas\Brush 05.PSD",48]
+//[IButton, [StrMerge, $plugin_path, "Mask 06"], "", [RoutineCall, MaskByAlpha, "06"],,56,,"c:\Program Files\Pixologic\ZBrush 2022\ZData\Alphas\Brush 06.PSD",48]
+//[IButton, [StrMerge, $plugin_path, "Mask 07"], "", [RoutineCall, MaskByAlpha, "07"],,56,,"c:\Program Files\Pixologic\ZBrush 2022\ZData\Alphas\Brush 07.PSD",48]
+//[IButton, [StrMerge, $plugin_path, "Mask 08"], "", [RoutineCall, MaskByAlpha, "08"],,56,,"c:\Program Files\Pixologic\ZBrush 2022\ZData\Alphas\Brush 08.PSD",48]
+//[IButton, [StrMerge, $plugin_path, "Mask 09"], "", [RoutineCall, MaskByAlpha, "09"],,56,,"c:\Program Files\Pixologic\ZBrush 2022\ZData\Alphas\Brush 09.PSD",48]
