@@ -1,0 +1,36 @@
+
+
+/** loadMask
+  *
+  */
+[RoutineDef, loadMask
+,
+	/* SAVE CURRRNT ALPHA */
+	[VarDef, $current_alpha_name, "" ]
+	[VarSet, $current_alpha_name, [IGetTitle, ALPHA: Current Alpha]]
+
+	/* LAOD ALPHA TO MASK */
+	[VarDef, $filename, ""]
+	[RoutineCall, getAlphaFilename, $alpha_id, $filename]
+
+
+	[If, [FileExists, $filename]
+	, // THEN
+		[VarLoad, $alpha_name, $filename]
+
+		[RoutineCall, ApplyAlpha, $alpha_name]
+
+		[IPress,Tool:Masking:Mask By Alpha]
+		[IPress,Tool:Masking:ViewMask]
+
+		/* Load back CURRRNT ALPHA */
+		[IPress,  [StrMerge, "Alpha: ", $current_alpha_name]]
+
+	, // ELSE
+		[Note, "Alpha file is not defined"  ]
+	]
+
+
+, // PARAMS
+	$alpha_id
+] // END loadMask

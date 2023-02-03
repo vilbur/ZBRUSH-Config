@@ -1,0 +1,10 @@
+/** Apply Alpha by name
+  *
+  */
+[RoutineDef, ApplyAlpha
+,
+	[IPress,  [StrMerge, "Alpha: ", $alpha_name]]
+, // PARAMS
+	$alpha_name
+] // END Apply Alpha
+//[ IButton, "Apply Alpha()" , "", [RoutineCall, ApplyAlpha, "Alpha 01"] ]

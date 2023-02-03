@@ -1,0 +1,16 @@
+/** Apply alpha as mask
+  *
+  */
+[RoutineDef, alphaToMask
+,
+	[If, [IGet, ALPHA:ItemInfo] // If Alpha exists
+	, // THEN
+		[RoutineCall, saveCurrentAlpha]
+
+		[IPress,Tool:Masking:Mask By Alpha]
+	, // ELSE
+		[Note, "Alpha is not defined"]
+	]
+
+] // END alphaToMask
+// [IButton, "alphaToMask()", "", [RoutineCall, alphaToMask]]

@@ -1,0 +1,12 @@
+
+/** Current masking to alpha
+  *
+  */
+[RoutineDef, maskToAlpha
+,
+	[IPress,Tool:Masking:Create Alpha]
+
+	[RoutineCall, saveCurrentAlpha]
+
+] // END maskToAlpha
+// [ IButton, "maskToAlpha()" , "", [RoutineCall, maskToAlpha] ]
