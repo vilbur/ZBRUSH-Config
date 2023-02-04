@@ -11,10 +11,11 @@
 
 	/* LAOD ALPHA TO MASK */
 	[VarDef, $filename, ""]
+	//[Note, $filename ]
 	[RoutineCall, alphaListPath, $alpha_id, $filename]
 
 	[If, [FileExists, $filename]
-	, // THEN
+	, // LAOD ALPHA AS MASK
 		[VarLoad, $alpha_name, $filename]
 
 		[RoutineCall, alphaApply, $alpha_name]
@@ -26,7 +27,7 @@
 		[IPress,  [StrMerge, "Alpha: ", $current_alpha_name]]
 
 	, // ELSE
-		[Note, "Alpha file is not defined"  ]
+		[Note, "Mask To Alpha"  ]
 	]
 
 , // PARAMS

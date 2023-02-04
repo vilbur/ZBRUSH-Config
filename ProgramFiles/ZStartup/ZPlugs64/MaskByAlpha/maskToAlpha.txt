@@ -12,8 +12,8 @@
 
 	[VarSet, $current_alpha_id,	[IGet,	ALPHA:ItemInfo] ]
 
-	[IEnable, [StrMerge, $PLUGIN_PATH, ":Mask ", $current_alpha_id] ]
-
+	//[Note, [StrMerge, $BUTTONS_CONTROLS, ":Mask ", $current_alpha_id] ]
+	[IEnable, [StrMerge, $BUTTONS_CONTROLS, ":Mask ", $current_alpha_id] ]
 
 ] // END maskToAlpha
 // [ IButton, "maskToAlpha()" , "", [RoutineCall, maskToAlpha] ]

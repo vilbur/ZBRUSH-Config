@@ -3,11 +3,21 @@
   */
 [RoutineDef, saveCurrentAlpha
 ,
+	[Note, "saveCurrentAlpha"]
+
 	[VarDef, $current_alpha_id ]
 	[VarSet, $current_alpha_id,	[IGet,	ALPHA:ItemInfo] ]
 
 	[VarDef, $current_alpha_name, "" ]
 	[VarSet, $current_alpha_name,	[IGetTitle,	Alpha:Current Alpha] ]
+
+
+	//[If, [StrLength, $current_alpha_id] > 1
+	//, // THEN
+	//	[VarSet, $current_alpha_id, [StrMerge, "0", $current_alpha_id] ]
+	//]
+
+
 
 	[VarDef, $filename, ""]
 	[RoutineCall, alphaListPath, $current_alpha_id, $filename]
@@ -19,7 +29,7 @@
 	[VarSave, $current_alpha_name, $filename ]
 
 ] // END saveCurrentAlpha()
-//[ IButton, "saveCurrentAlpha()" , "", [RoutineCall, saveCurrentAlpha] ]
+[ IButton, "saveCurrentAlpha()" , "", [RoutineCall, saveCurrentAlpha] ]
 
 
 /** save current alpha name to file "alpha_{id}.zvr"
@@ -59,5 +69,3 @@
 
 ] // END alphaToggle()
 [ IButton, "alphaToggle()" , "", [RoutineCall, alphaToggle] ]
-
-

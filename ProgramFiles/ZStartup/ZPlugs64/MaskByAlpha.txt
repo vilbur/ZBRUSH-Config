@@ -4,10 +4,12 @@
 [VarDef, $PLUGINS_MENU, 	"~VIL-PLUGINS"]
 [VarDef, $PLUGIN_SUBMENU,	"MaskByAlpha"]
 [VarDef, $BUTTONS_SUBMENU,	"MaskByAlpha-Buttons"]
-[VarDef, $ALPHA_LIST_FODLER,	"Alpha-List"]
+[VarDef, $ALPHA_LIST_FOLDER,	"Alpha-List"]
+//[VarDef, $ALPHA_DEFAULT_FOLDER,	"/../../ZData\Alphas"]
+[VarDef, $ALPHA_DEFAULT_FOLDER,	"c:\\Program Files\\Pixologic\\ZBrush 2022\\ZData\\Alphas"]
 
 
-[VarSet, $ALPHA_LIST_FOLDER, [StrMerge, $PLUGIN_SUBMENU, "/", $ALPHA_LIST_FODLER] ]
+[VarSet, $ALPHA_LIST_FOLDER, [StrMerge, $PLUGIN_SUBMENU, "/", $ALPHA_LIST_FOLDER] ]
 
 [VarSet, $PLUGIN_CONTROLS,	[StrMerge, $PLUGINS_MENU, ":", $PLUGIN_SUBMENU, ":"]]
 [VarSet, $BUTTONS_CONTROLS,	[StrMerge, $PLUGINS_MENU, ":", $BUTTONS_SUBMENU, ":"]]
@@ -24,7 +26,11 @@
 <zscriptinsert, "MaskByAlpha\alphaToMask.txt">
 <zscriptinsert, "MaskByAlpha\maskLoad.txt">
 <zscriptinsert, "MaskByAlpha\maskToAlpha.txt">
+<zscriptinsert, "MaskByAlpha\getFilesInFolder.txt">
 <zscriptinsert, "MaskByAlpha\UI.txt">
+<zscriptinsert, "MaskByAlpha\UI-BUTTONS.txt">
 
 
-[RoutineCall, initAlphaListFolder ]
+//[RoutineCall, initAlphaListFolder ]
+[RoutineCall, getFilesInFolder ]
+//[RoutineCall, getFilesInFolder, $ALPHA_LIST_FOLDER ]

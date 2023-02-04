@@ -15,21 +15,21 @@
 ,,40,,,48]
 
 
-[IButton, [StrMerge, $BUTTONS_CONTROLS, "Mask 1"], "Load Alpha As Mask 1",	[RoutineCall, maskLoad, 1],	1,56,,,48]
+//[IButton, [StrMerge, $BUTTONS_CONTROLS, "Mask 1"], "Load Alpha 1 As Mask",	[RoutineCall, maskLoad, 1],	1,56,,,48]
 
 
-//[IButton, "~VIL-PLUGINS:Mask By Alpha:Mask 2", "Load Alpha As Mask 2",	[RoutineCall, maskLoad, 2],	1,56,,,48]
-//[IButton, "~VIL-PLUGINS:Mask By Alpha:Mask 2", "Load Alpha As Mask 2",	[RoutineCall, maskLoad, 2],	1,56,,,48]
-//[IButton, "~VIL-PLUGINS:Mask By Alpha:Mask 3", "Load Alpha As Mask 3",	[RoutineCall, maskLoad, 3],	1,56,,,48]
-//[IButton, "~VIL-PLUGINS:Mask By Alpha:Mask 4", "Load Alpha As Mask 4",	[RoutineCall, maskLoad, 4],	1,56,,,48]
-//[IButton, "~VIL-PLUGINS:Mask By Alpha:Mask 5", "Load Alpha As Mask 5",	[RoutineCall, maskLoad, 5],	1,56,,,48]
-//[IButton, "~VIL-PLUGINS:Mask By Alpha:Mask 6", "Load Alpha As Mask 6",	[RoutineCall, maskLoad, 6],	1,56,,,48]
-//[IButton, "~VIL-PLUGINS:Mask By Alpha:Mask 7", "Load Alpha As Mask 7",	[RoutineCall, maskLoad, 7],	1,56,,,48]
-//[IButton, "~VIL-PLUGINS:Mask By Alpha:Mask 8", "Load Alpha As Mask 8",	[RoutineCall, maskLoad, 8],	1,56,,,48]
-//[IButton, "~VIL-PLUGINS:Mask By Alpha:Mask 9", "Load Alpha As Mask 9",	[RoutineCall, maskLoad, 9],	1,56,,,48]
-//[IButton, "~VIL-PLUGINS:Mask By Alpha:Mask 10", "Load Alpha As Mask 10",	[RoutineCall, maskLoad, 10],	1,56,,,48]
-//[IButton, "~VIL-PLUGINS:Mask By Alpha:Mask 11", "Load Alpha As Mask 11",	[RoutineCall, maskLoad, 11],	1,56,,,48]
-//[IButton, "~VIL-PLUGINS:Mask By Alpha:Mask 12", "Load Alpha As Mask 12",	[RoutineCall, maskLoad, 12],	1,56,,,48]
+//[IButton, "~VIL-PLUGINS:Mask By Alpha:Mask 2", "Load Alpha As Mask",	[RoutineCall, maskLoad, 2],	1,56,,,48]
+//[IButton, "~VIL-PLUGINS:Mask By Alpha:Mask 2", "Load Alpha As Mask",	[RoutineCall, maskLoad, 2],	1,56,,,48]
+//[IButton, "~VIL-PLUGINS:Mask By Alpha:Mask 3", "Load Alpha As Mask",	[RoutineCall, maskLoad, 3],	1,56,,,48]
+//[IButton, "~VIL-PLUGINS:Mask By Alpha:Mask 4", "Load Alpha As Mask",	[RoutineCall, maskLoad, 4],	1,56,,,48]
+//[IButton, "~VIL-PLUGINS:Mask By Alpha:Mask 5", "Load Alpha As Mask",	[RoutineCall, maskLoad, 5],	1,56,,,48]
+//[IButton, "~VIL-PLUGINS:Mask By Alpha:Mask 6", "Load Alpha As Mask",	[RoutineCall, maskLoad, 6],	1,56,,,48]
+//[IButton, "~VIL-PLUGINS:Mask By Alpha:Mask 7", "Load Alpha As Mask",	[RoutineCall, maskLoad, 7],	1,56,,,48]
+//[IButton, "~VIL-PLUGINS:Mask By Alpha:Mask 8", "Load Alpha As Mask",	[RoutineCall, maskLoad, 8],	1,56,,,48]
+//[IButton, "~VIL-PLUGINS:Mask By Alpha:Mask 9", "Load Alpha As Mask",	[RoutineCall, maskLoad, 9],	1,56,,,48]
+//[IButton, "~VIL-PLUGINS:Mask By Alpha:Mask 10", "Load Alpha As Mask0",	[RoutineCall, maskLoad, 10],	1,56,,,48]
+//[IButton, "~VIL-PLUGINS:Mask By Alpha:Mask 11", "Load Alpha As Mask1",	[RoutineCall, maskLoad, 11],	1,56,,,48]
+//[IButton, "~VIL-PLUGINS:Mask By Alpha:Mask 12", "Load Alpha As Mask2",	[RoutineCall, maskLoad, 12],	1,56,,,48]
 
 
 
