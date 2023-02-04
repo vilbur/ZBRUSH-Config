@@ -29,7 +29,6 @@
 		[Note, "Alpha file is not defined"  ]
 	]
 
-
 , // PARAMS
 	$alpha_id
 ] // END maskLoad
@@ -45,4 +44,3 @@
 [ IButton, "Mask 8", "Load Alpha As Mask 5", [RoutineCall, maskLoad, 8],,56,,,48]
 [ IButton, "Mask 9", "Load Alpha As Mask 5", [RoutineCall, maskLoad, 9],,56,,,48]
 [ IButton, "Mask 10", "Load Alpha As Mask 5", [RoutineCall, maskLoad, 10],,56,,,48]
-
