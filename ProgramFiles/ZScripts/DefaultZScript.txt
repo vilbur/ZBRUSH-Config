@@ -1,4 +1,4 @@
 //startup
 
 
-[IUnPress,Preferences:LightBox:Open At Launch]
+[pd]

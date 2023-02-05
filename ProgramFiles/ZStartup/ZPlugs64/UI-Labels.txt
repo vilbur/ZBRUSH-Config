@@ -20,11 +20,11 @@
 
 
 
-[IButton, "~VIL-PLUGINS:UI-Labels:__________ T O O L _______________________________________________________" ,"Open Tool Menu"	,[IHide,Tool]	[IShow,Tool]	,,,,,48]
-[IButton, "~VIL-PLUGINS:UI-Labels:__________ B R U S H _____________________________________________________" ,"Open Brush Menu"	,[IHide,Brush]	[IShow,Brush]	,,,,,48]
-[IButton, "~VIL-PLUGINS:UI-Labels:__________ S T R O K E ___________________________________________________" ,"Open Stroke Menu"	,[IHide,Stroke]	[IShow,Stroke]	,,,,,48]
-[IButton, "~VIL-PLUGINS:UI-Labels:__________ A L P H A _____________________________________________________" ,"Open Alpha Menu"	,[IHide,Alpha]	[IShow,Alpha]	,,,,,48]
-[IButton, "~VIL-PLUGINS:UI-Labels:__________ M A S K _______________________________________________________" ,""	,,,,,,48]
+[IButton, "~VIL-PLUGINS:UI-Labels:__________ T O O L _______________________________________________________" ,"Open Tool Menu"	,[IShow,Tool]	,,,,,48]
+[IButton, "~VIL-PLUGINS:UI-Labels:__________ B R U S H _____________________________________________________" ,"Open Brush Menu"	,[IShow,Brush]	,,,,,48]
+[IButton, "~VIL-PLUGINS:UI-Labels:__________ S T R O K E ___________________________________________________" ,"Open Stroke Menu"	,[IShow,Stroke]	,,,,,48]
+[IButton, "~VIL-PLUGINS:UI-Labels:__________ A L P H A _____________________________________________________" ,"Open Alpha Menu"	,[IShow,Alpha]	,,,,,48]
+[IButton, "~VIL-PLUGINS:UI-Labels:__________ M A S K _______________________________________________________" ,"Open Masking Menu"	,[IShow,Tool][IClick, Tool:Masking, 1],,,,,48]
 [IButton, "~VIL-PLUGINS:UI-Labels:__________ T E X T U R E _________________________________________________" ,""	,,,,,,48]
 [IButton, "~VIL-PLUGINS:UI-Labels:__________ M A T E R I A L _______________________________________________" ,""	,,,,,,48]
 [IButton, "~VIL-PLUGINS:UI-Labels:__________ C O L O R _____________________________________________________" ,""	,,,,,,48]

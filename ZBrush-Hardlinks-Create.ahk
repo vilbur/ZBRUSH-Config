@@ -13,13 +13,12 @@
   *	Path will be replace by paths
   *
   */
-$source_paths := [ "ProgramFiles/ZScripts"
-				  ,"AppData/ZStartup"
-				  ,"ProgramFiles/ZStartup/ZPlugs64/UI-Labels.zsc"
-				  ,"ProgramFiles/ZStartup/ZPlugs64/Load-Plugins.zsc"  ]
-
-
-
+;global $source_paths := [	"AppData/ZStartup"
+;	,"ProgramFiles/ZScripts"
+;	,"ProgramFiles/ZStartup/ZPlugs64/UI-Labels.zsc"
+;
+;						 ,"ProgramFiles/ZStartup/ZPlugs64/Load-Plugins.zsc"  ]
+global $source_paths := [	"AppData/ZStartup" ]
 
 
 /** 2D Array of strings [ "{search}", "{repalce}" ]
@@ -30,8 +29,7 @@ $source_paths := [ "ProgramFiles/ZScripts"
   * 	"AppData/scripts" >>> "C:/Users/%username%/AppData/Local/Autodesk/3dsMax/2023 - 64bit/ENU/scripts"
   *
   */
-;$search_and_replaces_R6 := [ [ "ProgramFiles", "C:/Program Files (x86)/Pixologic/ZBrush 4R6" ],[ "AppData", "C:/Users/Public/Documents/ZBrushData" ] ]
-$search_and_replaces_2022 := [ [ "ProgramFiles", "C:/Program Files/Pixologic/ZBrush 2022" ],[ "AppData", "C:/Users/Public/Documents/ZBrushData2022" ] ]
+global $search_and_replaces := [ [ "ProgramFiles", "C:/Program Files/Pixologic/ZBrush 2022" ],[ "AppData", "C:/Users/Public/Documents/ZBrushData2022" ] ]
 
 
 /** isHardlink
@@ -54,45 +52,53 @@ isHardlink( $path )
  */
 createHardlinks( $path_source, $path_link_target )
 {
+	$is_folder := InStr( FileExist($path_source), "D" ) != 0
 
+	;MsgBox,262144,path_source, %$path_source%
 	;MsgBox,262144,path_link_target, %$path_link_target%
-	;MsgBox,262144,mklink, % isHardlink($path_link_target)
+	;MsgBox,262144,isHardlink, % ! isHardlink($path_link_target)
+
 
 	if ( ! isHardlink($path_link_target) )
 	{
+		/*
+			BACKUP ORIGINAL FILES & FODLERS
+		*/
 		$path_target_bak	:= $path_link_target ".default"
-
-		$is_folder := InStr( FileExist($path_source), "D" ) != 0
-
 
 		/**  Backup original file or folder
 		  */
 		if( FileExist( $path_link_target ) && ! FileExist( $path_target_bak ) )
 		{
+
 			if( $is_folder )
-				FileMoveDir, % $path_link_target, % $path_target_bak
+				FileMoveDir, %$path_link_target%, %$path_target_bak%
 			else
-				FileCopy, % $path_link_target, % $path_target_bak
+				FileMove, %$path_link_target%, %$path_target_bak%
 		}
-
-
-
-		FileRemoveDir, $path_link_target, 1
-
-
-		$file_or_folder	:= $is_folder ? "/d" : ""
-
-
-		$mklink	:= "mklink " $file_or_folder " """ $path_link_target """ """ $path_source """"
-		;MsgBox,262144,mklink, %$mklink%
-
-		RunWait %comspec% /c %$mklink%,,Hide
 	}
+
+	/*
+		REMOVE OLD OCCURENCES
+	*/
+	if( $is_folder )
+		FileRemoveDir, %$path_link_target%
+
+	else
+		FileDelete, %$path_link_target%
+		
+
+	$file_or_folder	:= $is_folder ? "/d" : ""
+
+	$mklink	:= "mklink " $file_or_folder " """ $path_link_target """ """ $path_source """"
+
+	RunWait %comspec% /c %$mklink%,,Hide
+
 }
 
 /** LOOP SOURCE PATHS
  */
-loopDirectoriesAndCreateHardlinks($source_paths, $search_and_replaces)
+loopDirectoriesAndCreateHardlinks()
 {
 	;MsgBox,262144,search_and_replaces, % $search_and_replaces[1][1]
 
@@ -119,6 +125,10 @@ loopDirectoriesAndCreateHardlinks($source_paths, $search_and_replaces)
 			$path_link_source	:= RegExReplace( $path_link_source, "/", "\") ;"
 			$path_link_target	:= RegExReplace( $path_link_target, "/", "\") ;"
 
+			;MsgBox,262144,path_link_source, %$path_link_source%
+			;MsgBox,262144,path_link_target, %$path_link_target%
+
+
 			if( FileExist( $path_link_source ) )
 				createHardlinks( $path_link_source,	$path_link_target )
 			else
@@ -130,6 +140,6 @@ loopDirectoriesAndCreateHardlinks($source_paths, $search_and_replaces)
 /** EXECUTE
   *
   */
-loopDirectoriesAndCreateHardlinks($source_paths, $search_and_replaces_2022)
+loopDirectoriesAndCreateHardlinks()
 
 ;MsgBox,262144, SUCCESS, Hardlinks created
