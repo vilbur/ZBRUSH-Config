@@ -13,13 +13,11 @@
   *	Path will be replace by paths
   *
   */
-;global $source_paths := [	"AppData/ZStartup"
-;	,"ProgramFiles/ZScripts"
-;	,"ProgramFiles/ZStartup/ZPlugs64/UI-Labels.zsc"
-;
-;						 ,"ProgramFiles/ZStartup/ZPlugs64/Load-Plugins.zsc"  ]
-global $source_paths := [	"AppData/ZStartup" ]
+global $source_paths := [	"AppData/ZStartup"
+	,"ProgramFiles/ZScripts"
+	,"ProgramFiles/ZStartup/ZPlugs64/UI-Labels.zsc"
 
+						 ,"ProgramFiles/ZStartup/ZPlugs64/Load-Plugins.zsc"  ]
 
 /** 2D Array of strings [ "{search}", "{repalce}" ]
   *
@@ -50,31 +48,31 @@ isHardlink( $path )
 
 /** CREATE HARDLINKS TOS ZBRUSH
  */
-createHardlinks( $path_source, $path_link_target )
+createHardlinks( $path_source, $path_link )
 {
 	$is_folder := InStr( FileExist($path_source), "D" ) != 0
 
 	;MsgBox,262144,path_source, %$path_source%
-	;MsgBox,262144,path_link_target, %$path_link_target%
-	;MsgBox,262144,isHardlink, % ! isHardlink($path_link_target)
+	;MsgBox,262144,path_link, %$path_link%
+	;MsgBox,262144,isHardlink, % ! isHardlink($path_link)
 
 
-	if ( ! isHardlink($path_link_target) )
+	if ( ! isHardlink($path_link) )
 	{
 		/*
 			BACKUP ORIGINAL FILES & FODLERS
 		*/
-		$path_target_bak	:= $path_link_target ".default"
+		$path_target_bak	:= $path_link ".default"
 
 		/**  Backup original file or folder
 		  */
-		if( FileExist( $path_link_target ) && ! FileExist( $path_target_bak ) )
+		if( FileExist( $path_link ) && ! FileExist( $path_target_bak ) )
 		{
 
 			if( $is_folder )
-				FileMoveDir, %$path_link_target%, %$path_target_bak%
+				FileMoveDir, %$path_link%, %$path_target_bak%
 			else
-				FileMove, %$path_link_target%, %$path_target_bak%
+				FileMove, %$path_link%, %$path_target_bak%
 		}
 	}
 
@@ -82,15 +80,15 @@ createHardlinks( $path_source, $path_link_target )
 		REMOVE OLD OCCURENCES
 	*/
 	if( $is_folder )
-		FileRemoveDir, %$path_link_target%
+		FileRemoveDir, %$path_link%
 
 	else
-		FileDelete, %$path_link_target%
-		
+		FileDelete, %$path_link%
+
 
 	$file_or_folder	:= $is_folder ? "/d" : ""
 
-	$mklink	:= "mklink " $file_or_folder " """ $path_link_target """ """ $path_source """"
+	$mklink	:= "mklink " $file_or_folder " """ $path_link """ """ $path_source """"
 
 	RunWait %comspec% /c %$mklink%,,Hide
 
@@ -119,20 +117,20 @@ loopDirectoriesAndCreateHardlinks()
 
 		if( $search !="" && $replace !="" )
 		{
-			$path_link_source := A_WorkingDir "/" $path
-			$path_link_target :=  StrReplace( $path, $search, $replace )
+			$path_source := A_WorkingDir "/" $path
+			$path_link :=  StrReplace( $path, $search, $replace )
 
-			$path_link_source	:= RegExReplace( $path_link_source, "/", "\") ;"
-			$path_link_target	:= RegExReplace( $path_link_target, "/", "\") ;"
+			$path_source	:= RegExReplace( $path_source, "/", "\") ;"
+			$path_link	:= RegExReplace( $path_link, "/", "\") ;"
 
-			;MsgBox,262144,path_link_source, %$path_link_source%
-			;MsgBox,262144,path_link_target, %$path_link_target%
+			;MsgBox,262144,path_source, %$path_source%
+			;MsgBox,262144,path_link, %$path_link%
 
 
-			if( FileExist( $path_link_source ) )
-				createHardlinks( $path_link_source,	$path_link_target )
+			if( FileExist( $path_source ) )
+				createHardlinks( $path_source,	$path_link )
 			else
-				MsgBox,262144, PATH DOES NOT EXISTS, % "PATH DOES NOT EXISTS:`n`n" $path_link_source
+				MsgBox,262144, PATH DOES NOT EXISTS, % "PATH DOES NOT EXISTS:`n`n" $path_source
 		}
 	}
 }
