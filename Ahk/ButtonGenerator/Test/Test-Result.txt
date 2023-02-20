@@ -1,0 +1,12 @@
+
+[IButton, "Defaults", "",
+	[Note, "Defaults"]
+, , , , ,  ]
+
+[IButton, "Params", "Disabled with tooltip",
+	
+, , , 1, ,  ]
+
+[IButton, "Icon Button", "",
+	
+, , 64, ,  "C:\GoogleDrive\ProgramsData\CG\ZBrush\Config\Ahk\ButtonGenerator\Test\icon.psd", 64 ]
