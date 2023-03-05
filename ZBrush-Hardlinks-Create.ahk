@@ -15,9 +15,9 @@
   */
 global $source_paths := [	"AppData/ZStartup"
 	,"ProgramFiles/ZScripts"
-	,"ProgramFiles/ZStartup/ZPlugs64/UI-Labels.zsc"
 
-						 ,"ProgramFiles/ZStartup/ZPlugs64/Load-Plugins.zsc"  ]
+						 ,"ProgramFiles/ZStartup/ZPlugs64/UI-Labels.zsc"]
+
 
 /** 2D Array of strings [ "{search}", "{repalce}" ]
   *
@@ -118,7 +118,7 @@ loopDirectoriesAndCreateHardlinks()
 		if( $search !="" && $replace !="" )
 		{
 			$path_source := A_WorkingDir "/" $path
-			$path_link :=  StrReplace( $path, $search, $replace )
+			$path_link :=  StrReplace( $path, $search "/", $replace "/" )
 
 			$path_source	:= RegExReplace( $path_source, "/", "\") ;"
 			$path_link	:= RegExReplace( $path_link, "/", "\") ;"
