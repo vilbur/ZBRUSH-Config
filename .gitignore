@@ -1,5 +1,8 @@
+**.bak
+**.zvr
 
-# DO NOT IGNORE THESE FILES
-!.gitignore
 
 Ahk/ButtonGenerator/Test/Test-Result.zsc
+
+
+ProgramFiles/ZScripts/Test.psd
