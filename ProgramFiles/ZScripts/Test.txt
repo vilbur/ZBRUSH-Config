@@ -1,12 +1,5 @@
+[IButton, "Button Text", "Tooltip"
+,
+	//Commands
 
-
-
-[IButton, TEST,"Press to play this ZScript. ZScript can be aborted at anytime by pressing the ëescí key.",
-[IConfig,2022]
-
-//[VarSet, $filename, "Relative\Path"]
-
-[Note, [FileNameResolvePath, "..\..\\"]]
-
-
-]/*End of ZScript*/
+,	/*Disabled*/,	/*Width*/,	/*Hotkey*/,	/*Icon*/,	/*Height*/]

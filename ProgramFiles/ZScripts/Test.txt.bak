@@ -1,102 +1,101 @@
-//RECORDED ZSCRIPT 2022
 
 
-/** getFilesInFolder
-  *
+/** useAndSaveBrush
   */
-[RoutineDef, getFilesInFolder
+[RoutineDef, useAndSaveBrush
 ,
-	//[Note, getFilesInFolder]
-	[VarSet,folderName,[FileNameResolvePath, $folder_path]]
+	//[Note, "useAndSaveBrush"]
+	[MemWriteString, MEMBLOCK_BRUSHES, brush, 0 /* offset position */]
 
-	[VarSet, dllPath, "ZFileUtils64.dll"]
+	[Note, [StrMerge, "useAndSaveBrush: ", [Var, brush ] ]]
 
-	//[VarSet,folderName, "c:\GoogleDrive\ProgramsData\CG\ZBrush\ProgramFiles\ZStartup\ZPlugs64\MaskByAlpha\Alpha-List" ]
-
-	[VarSet,fileCount,[FileExecute,[Var,dllPath],"GetFileNumber",folderName]]
-	[If,fileCount < 0,[Note,"Error getting number of files in folder"]]
-
-
-	[VarSet,err,[FileExecute,[Var,dllPath],"OpenFolder",folderName]]
-	//if we can't open the folder exit the zscript
-	[If,err,[Note,"Error opening folder."][Exit]]
-
-
-	//[Note, fileCount ]
-
-	//create a memblock to get the file name
-	[MemCreate,ZFileUtils_list, 512, 0]
-
-	//[VarDef, counter, 0]
-	[VarDef, files_array(fileCount),""]
-
-	[Loop,fileCount,//loop through the files
-
-		//get the filename
-		[VarSet,err,[FileExecute,[Var,dllPath],"GetFile",,,ZFileUtils_list]]
-
-		//an error means we've reached the end of the list, so exit the loop
-		[If,err,[LoopExit]]
-
-
-		//[Note, [MemGetSize, ZFileUtils_list] ]
-
-		[VarDef, fileName, ""]
-		//otherwise write the file name from the memblock to a variable
-		[MemReadString, ZFileUtils_list, fileName]
-
-		//[Note,fileName]//display each file or folder name
-
-		//[Note, i ]
-
-		//[Note,counter]//display each file or folder name
-
-		[VarSet, files_array(i), fileName]
-
-		//[VarSet, counter, counter+1]
-
-	,i]//end loop
-
-
-	[Loop, fileCount,
-		//[Note, $i ]
-		[Note, files_array(i) ]
-
-	 ,i]
-
-
-	[VarSet,err,[FileExecute,[Var,dllPath],"CloseFolder",folderName]]
-	[If,err,[Note,"Error closing folder."]]
-
-	//delete the memblock as we've done with it
-	[MemDelete,ZFileUtils_list]
-
-	[VarSet, $file, files_array]
-
+	[IPress, [StrMerge, "Brush:", brush] ]
 , // PARAMS
-	$folder_path, $files
-	//$folder_path
-] // END getFilesInFolder()
-//[ IButton, "getFilesInFolder()" , "", [RoutineCall, getFilesInFolder] ]
+	brush
+]
+//[IButton, "useAndSaveBrush()" , "", [RoutineCall, useAndSaveBrush] ]
 
 
 
 
 
+[IButton,TEST,"Press to play this ZScript. ZScript can be aborted at anytime by pressing the ëescí key.",
 
 
-[IButton, TEST,"Press to play this ZScript. ZScript can be aborted at anytime by pressing the ëescí key.",
-[IConfig,2022]
-
-	//[VarDef, $files(),""]
-//
-
-	[RoutineCall, getFilesInFolder, "c:\GoogleDrive\ProgramsData\CG\ZBrush\ProgramFiles\ZStartup\ZPlugs64\MaskByAlpha\Alpha-List", $files]
-	//[RoutineCall, getFilesInFolder, "c:\GoogleDrive\ProgramsData\CG\ZBrush\ProgramFiles\ZStartup\ZPlugs64\MaskByAlpha\Alpha-List" ]
+	[VarDef, ARRAY_LENGTH, 3 ]
 
 
+	[If, [MemGetSize, MEMBLOCK_BRUSHES]
+	, // THEN memory exists
 
 
-]/*End of ZScript*/
+		[VarDef, last_brush, "" ]
+		[VarDef, current_brush, ""]
+
+		[MemReadString, MEMBLOCK_BRUSHES, last_brush, 0]
+
+		[VarSet, current_brush, [StrExtract, [IGetTitle, Brush:ItemInfo], 0, [StrLength, [IGetTitle, Brush:ItemInfo]] - 2 ] ] // remove period
 
 
+		//[Note, last_brush]
+		//[Note, [StrMerge, "current_brush: ", [Var, current_brush ] ]
+		//[Note, [StrMerge, "last_brush: ", [Var, last_brush ] ]]
+
+
+
+
+		[If, ([StrLength,current_brush]==[StrLength,last_brush])&&([StrFind,current_brush,last_brush]>-1)
+
+		, // CURRENT BRUSH IS SAME AS LAST
+			[Note, "USE NEXT OR FIRST BRUSH",, 0]
+			//[MemWriteString, MEMBLOCK_BRUSHES, "", 0 /* offset position */]
+
+
+			[Loop, [Var, ARRAY_LENGTH]
+			,
+				[VarDef, item, ""]
+				[VarSet, index, (i + 1) * 32]
+
+				[MemReadString, MEMBLOCK_BRUSHES, item, index]
+
+				//[Note, item ,, 0]
+
+				[If, ([StrLength,item]==[StrLength,current_brush])&&([StrFind,item,current_brush]>-1)
+				, //
+
+					[VarDef, next_brush, ""]
+
+					[MemReadString, MEMBLOCK_BRUSHES, next_brush, #index + 32]
+
+					[RoutineCall, useAndSaveBrush, next_brush]
+
+				]
+
+			,i]
+
+
+		, // ELSE SET LAST BRUSH
+			[Note, "USE LAST OR FIRST BRUSH",, 0]
+
+			[If, [StrLength, last_brush ] == 0
+			, // THEN
+				[MemReadString, MEMBLOCK_BRUSHES, last_brush, 32] // get first brush
+			]
+
+			[RoutineCall, useAndSaveBrush, last_brush]
+		]
+
+		//[MemDelete, MEMBLOCK_BRUSHES]
+
+	, // ELSE create memory block
+
+		[MemCreate, MEMBLOCK_BRUSHES, 1024 /* size */ ]
+
+		[MemWriteString, MEMBLOCK_BRUSHES, "", 0 /* offset position */]
+		[MemWriteString, MEMBLOCK_BRUSHES, "Standard", 32 /* offset position */]
+		[MemWriteString, MEMBLOCK_BRUSHES, "Clay", 64 /* offset position */]
+		[MemWriteString, MEMBLOCK_BRUSHES, "Pinch", 96 /* offset position */]
+	]
+
+
+,,128,,, 128]/*End of TEST*/

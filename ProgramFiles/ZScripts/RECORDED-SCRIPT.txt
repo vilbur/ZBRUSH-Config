@@ -1,0 +1,9 @@
+//RECORDED ZSCRIPT 2022
+[IButton,Play,"Press to play this ZScript. ZScript can be aborted at anytime by pressing the ëescí key.",
+[IConfig,2022]
+
+[Note, [IGetTitle,Tool:ItemInfo],, 0]
+
+
+
+]/*End of ZScript*/
