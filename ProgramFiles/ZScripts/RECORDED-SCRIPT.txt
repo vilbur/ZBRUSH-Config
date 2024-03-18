@@ -1,39 +1,6 @@
 //RECORDED ZSCRIPT 2022
 [IButton,Play,"Press to play this ZScript. ZScript can be aborted at anytime by pressing the ëescí key.",
 [IConfig,2022]
-
-   [VarSet,toolID,[IGet,Tool:Item Info]]
-
-
-
-	/*	//switch to the tool you want to append:
-		//(this code assumes that the append tool was the most recently loaded) */
-   [ISet, Tool:Item Info,[IGetMax,Tool:Item Info]]
-
-
-	/* get the name of the append tool: */
-   [VarSet,appendTool,[IGetTitle,Tool:Current Tool,0]]
-
-
-   [VarSet,toolIDAppend,[IGet,Tool:Item Info]]
-
-
-   /* switch back to the main tool: */
-   [ISet,Tool:Item Info,#toolID]
-
-   [If, appendTool != toolIDAppend
-   , // THEN
-		/* append the tool: */
-		[IPress,Tool:SubTool:Append]
-		[IPress,[StrMerge,"PopUp:",#appendTool]]
-
-   , // ELSE
-		[Note, "There is not any tool to append",, 0]
-
-   ]
-
-
-
-
-
+[IPress,Tool:Load Tool]
+[IPress,~Extended:Script:  SHOW SCRIPT]
 ]/*End of ZScript*/
