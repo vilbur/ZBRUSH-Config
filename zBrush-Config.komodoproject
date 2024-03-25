@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Komodo Project File - DO NOT EDIT -->
+<project id="a03907bf-4e7b-441e-8ea3-7422202c8e9c" kpf_version="5" name="zBrush-Config.komodoproject">
+<file id="17cb2010-0d7c-4812-8b28-20ca5aa73795" idref="a03907bf-4e7b-441e-8ea3-7422202c8e9c" name="RECORDED-SCRIPT.txt" url="ProgramFiles/ZScripts/RECORDED-SCRIPT.txt">
+</file>
+<file id="5c04651a-726a-497f-8b0f-7cd6ef9b31ae" idref="a03907bf-4e7b-441e-8ea3-7422202c8e9c" name="TEST.txt" url="ProgramFiles/ZScripts/TEST.txt">
+</file>
+<livefolder id="9547f2a2-4262-4ab7-958b-cd5687824545" idref="a03907bf-4e7b-441e-8ea3-7422202c8e9c" name="Resize-Controls" url="ProgramFiles/ZScripts/Startup-Scripts/Resize-Controls/">
+</livefolder>
+<livefolder id="d71b252e-885c-4e4f-abed-ba4519b1cae3" idref="a03907bf-4e7b-441e-8ea3-7422202c8e9c" name="Startup-Scripts" url="ProgramFiles/ZScripts/Startup-Scripts/">
+</livefolder>
+<livefolder id="f5df3e02-26f5-43ff-88b9-187113c771bf" idref="a03907bf-4e7b-441e-8ea3-7422202c8e9c" name="ZScripts" url="ProgramFiles/ZScripts/">
+</livefolder>
+<preference-set idref="a03907bf-4e7b-441e-8ea3-7422202c8e9c" id="project" preftype="project">
+  <long id="prefs_version">1</long>
+</preference-set>
+</project>

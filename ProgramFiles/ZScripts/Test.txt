@@ -1,5 +1,69 @@
-[IButton, "Button Text", "Tooltip"
-,
-	//Commands
 
-,	/*Disabled*/,	/*Width*/,	/*Hotkey*/,	/*Icon*/,	/*Height*/]
+
+
+//[IButton, "Copy Name", "COPY NAME CURRENT SUBTOOL"
+//,
+//
+//	[If, ! [MemGetSize, SUBTOOLNAME],
+//	 		[MemCreate, SUBTOOLNAME, 256 /* size */ ]]
+//
+//
+//	[VarSet, subtoolNameCurrent, [FileNameExtract, [GetActiveToolPath], 2]]
+//
+//
+//	[MemWriteString, SUBTOOLNAME, subtoolNameCurrent /* value */ ]
+//
+//
+//,/*Disabled*/,96,/*Hotkey*/,/*Icon*/, /*width*/]
+//
+//
+///* Paste Current Subtool Name
+//*/
+//[IButton, "Paste Name", "PASTE NAME CURRENT SUBTOOL"
+//,
+//
+//	[If, [MemGetSize, SUBTOOLNAME]
+//	, // THEN memory exists
+//
+//		[VarDef, memoryString ]
+//
+//		[MemReadString, SUBTOOLNAME, memoryString ]
+//
+//		//[RoutineCall, renameSubtool, memoryString ]
+//
+//		[Note, memoryString,, 0]
+//
+//
+//	]
+//
+//
+//,/*Disabled*/,96,/*Hotkey*/,/*Icon*/, /*width*/]
+//
+//
+//
+
+[IButton, RECORDED, "",
+[IConfig,2022]
+
+	[If, [MemGetSize, MEMBLOCKSTRING]
+, // THEN memory exists
+
+	[VarDef, memoryString, "" ]
+
+	[MemReadString, MEMBLOCKSTRING, memoryString, 0 /* offset */ ]
+
+	//[Note, memoryString,, 0]
+	[Note, [StrMerge, "memoryString: ", memoryString ] ]
+
+	[MemDelete, MEMBLOCKSTRING]
+
+, // ELSE create memory block
+
+	[MemCreate, MEMBLOCKSTRING, 256 /* size */ ]
+
+	[MemWriteString, MEMBLOCKSTRING, "value" /* value */ ]
+
+]
+
+
+,/*Disabled*/, 256 ,/*Hotkey*/,/*Icon*/,64]
