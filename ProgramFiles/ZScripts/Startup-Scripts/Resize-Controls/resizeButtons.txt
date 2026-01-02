@@ -66,7 +66,7 @@
 	/*------------------------------------------------------------------------------
 		BRUSH \ STROKE
 	--------------------------------------------------------------------------------*/
-	[IModify, "Brush:Auto Masking:Topological", 0,	#BIG ]
+	[IModify, "Brush:Auto Masking:Topological", 0,	#MIN ]
 
 
 
@@ -134,7 +134,7 @@
 
 
 
-	[IModify, "Transform:Activate Symmetry",	#W4 - #W2 ,	24]
+	[IModify, "Transform:Activate Symmetry",	#W2 ,	#MID ]
 	[IModify, "Transform:Solo", 96, 64]
 	
 	/*------------------------------------------------------------------------------
