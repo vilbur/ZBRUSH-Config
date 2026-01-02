@@ -1,1 +1,1 @@
-# Config
+# Config for ZBrush

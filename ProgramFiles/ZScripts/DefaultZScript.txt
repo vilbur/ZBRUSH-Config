@@ -1,0 +1,6 @@
+//startup
+
+
+[pd]
+
+<zscriptinsert, "Startup-Scripts/Startup-Script.txt">	// "./Startup-Scripts/Startup-Script.txt"

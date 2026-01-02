@@ -1,0 +1,37 @@
+//RECORDED ZSCRIPT 2022
+[IButton,Play,"Press to play this ZScript. ZScript can be aborted at anytime by pressing the ëescí key.",
+[IConfig,2022]
+
+
+ //[ShellExecute, [StrMerge, "notepad++.exe ", "\"" , 	[FileNameResolvePath, [StrMerge, ZBRUSH_ZScripts, "\\RECORDED-SCRIPT.txt"] ] , "\"" ] ]
+	//[FileNameSetNext, "ZBRUSH_ZScripts\RECORDED-SCRIPT.txt"]
+	//[IPress, ZScript:Load]
+
+//[Note,  [FileNameResolvePath, [StrMerge, ZBRUSH_ZScripts, "\\RECORDED-SCRIPT.txt"]] ,, 0]
+
+
+//[FileExecute, [FileNameResolvePath, [StrMerge, ZBRUSH_ZScripts, "\\ZFileUtils64.dll"]], "LaunchAppWithFile", 
+// 
+// //[StrMerge, "start notepad++.exe ", """" , 	[FileNameResolvePath, [StrMerge, ZBRUSH_ZScripts, "\RECORDED-SCRIPT.txt"] ] , """" ]
+// [StrMerge, "start notepad++.exe " , 	[FileNameResolvePath, [StrMerge, ZBRUSH_ZScripts, "\\RECORDED-SCRIPT.txt"] ]  ]
+// 
+//]
+
+
+[ShellExecute,
+   [StrMerge,"start notepad.exe ",
+	[StrFromAsc,34],
+	[FileNameResolvePath, [StrMerge, ZBRUSH_ZScripts, "\RECORDED-SCRIPT.txt"] ] ,
+	[StrFromAsc,34]
+
+	]
+
+ ]
+
+////[VarSet, $ZFILE_UTILS_DLL, "ZFileUtils64.dll"]
+//[VarSet, $file_path, "Path\To\file.exe" ]
+//[VarSet, file_path, [FileNameResolvePath, [StrMerge, ZBRUSH_ZScripts, "\\ZFileUtils64.dll"]]]
+//[VarSet, err, [FileExecute, $ZFILE_UTILS_DLL, "LaunchAppWithFile",  #file_path]] // execute file
+//[If, err, [Note, "Error in execution",, 2] ]
+
+]/*End of ZScript*/

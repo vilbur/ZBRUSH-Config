@@ -1,0 +1,9 @@
+
+
+[If,[MemGetSize,MessageOff_Mem],,
+	[If,[IExists,"Brush:Smooth"],[IKeyPress,'2',[IPress,"Brush:Smooth"]]]
+	[If,[IExists,"Brush:SelectLasso"],	[IKeyPress,'2',[IPress,"Brush:SelectLasso"]]]
+	[If,[IExists,"Brush:MaskPen"],	[IKeyPress,'2',[IPress,"Brush:MaskPen"]]]
+	[MVarDef,MessageOff_Mem,1,0]
+]
+

@@ -1,0 +1,35 @@
+/** resizeSliders
+  *
+  */
+[RoutineDef, resizeSliders
+,
+	[VarSet, DEF,	24]
+	[VarSet, MIN,	28]
+	[VarSet, MID,	36]
+	[VarSet, BIG,	48]
+
+	[VarSet, W1,	32]
+	[VarSet, W2,	48]
+	[VarSet, W3,	64]
+	[VarSet, W4,	96]
+	[VarSet, W5,	192]
+	[VarSet, FULL,	384]
+	
+	[IModify, "Draw:Draw Size",	0, #MID ]
+	[IModify, "Draw:  Z Intensity",	0, #MID ]
+	[IModify, "Draw:Focal Shift", 	0, #MID ]
+	[IModify, "Draw:Rgb Intensity",	0, #MID ]
+
+	//[IModify, "Stroke:AdjustLast", 	0, #MID ]
+
+
+	[IModify, "Tool:Geometry:SDiv", 	128, #MID ]
+
+	[IModify, "Tool:Layers:Layer Intensity", 	0, #MID ]
+	
+	
+	[IModify, "Tool:Geometry:AdaptiveSize", #W4,	#MID ]
+	[IModify, "Tool:Geometry:Curves Strength", #W4,	#MID ]
+
+]
+[IButton, "resizeSliders()" , "", [RoutineCall, resizeSliders] ]

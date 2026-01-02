@@ -1,0 +1,27 @@
+//RECORDED ZSCRIPT 2022
+[IButton,TEST,"Press to play this ZScript. ZScript can be aborted at anytime by pressing the ëescí key.",
+[IConfig,2022]
+
+
+
+	[varset,EditToolPath,[FileNameResolvePath,"vilTools/EditTool.ztl"]]
+
+	[FileNameSetNext,EditToolPath][IPress,Tool:Load Tool]
+
+
+	[IPress,Stroke:FreeHand]
+	[CanvasStroke,(ZObjStrokeV02n2=H229V214H229V214)]
+	[IPress,Transform: Edit]
+	[IPress,Transform:Fit]
+	[Note,"Edit Tool Loaded",,1]
+
+
+	[IPress,Draw:Perspective]
+	[IPress,Tool:SubTool:Uv]
+	[IPress,Zplugin:Decimation Master:Keep UVs]
+
+
+
+
+
+]/*End of ZScript*/

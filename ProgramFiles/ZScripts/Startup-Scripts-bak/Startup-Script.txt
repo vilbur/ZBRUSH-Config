@@ -1,0 +1,37 @@
+
+	
+	
+/*------------------------------------------------------------------------------
+	IMPORT SCRIPTS
+--------------------------------------------------------------------------------*/
+<zscriptinsert, "Startup-Scripts/Off-Messages/Off-Messages.txt">	// "./Off-Messages/Off-Messages.txt"
+<zscriptinsert, "Startup-Scripts/Restart-Zbrush/Restart-Zbrush.txt">	// "./Restart-Zbrush/Restart-Zbrush.txt"
+<zscriptinsert, "Startup-Scripts/Resize-Controls/resizeBrushButtons.txt">	// "./Resize-Controls/resizeBrushButtons.txt"
+<zscriptinsert, "Startup-Scripts/Resize-Controls/resizeSliders.txt">	// "./Resize-Controls/resizeSliders.txt"
+<zscriptinsert, "Startup-Scripts/Resize-Controls/resizeButtons.txt">	// "./Resize-Controls/resizeButtons.txt"
+<zscriptinsert, "Startup-Scripts/createBrushAlpha/createBrushAlpha.txt">	// "./createBrushAlpha/createBrushAlpha.txt"
+
+
+[RoutineCall, resizeSliders]
+//[RoutineCall, resizeButtons]
+[RoutineCall, createBrushAlpha]
+
+
+
+/* OPEN PALLETES DOES NOT WORK */
+
+
+///** Resize Brush buttons on startup
+//  *	Without sleep they don`t want to resize
+//  */
+//[Sleep,,
+//
+//	[IFreeze,
+//
+//		//[RoutineCall, createBrushAlpha]
+//	]
+//
+//	[RoutineCall, resizeBrushButtons]
+//
+//, 256
+//]

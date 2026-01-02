@@ -1,0 +1,31 @@
+/** resizeBrushButtons
+  *
+  */
+//[RoutineDef, resizeBrushButtons
+//,
+	[VarSet, $brush_width, 56]
+
+	[IModify, "Brush:Standard",	[Var, $brush_width], 0]
+	[IModify, "Brush:Clay",	[Var, $brush_width], 0]
+	[IModify, "Brush:Move",	[Var, $brush_width], 0]
+	[IModify, "Brush:Flatten",	[Var, $brush_width], 0]
+	[IModify, "Brush:Pinch",	[Var, $brush_width], 0]
+	[IModify, "Brush:Magnify",	[Var, $brush_width], 0]
+	[IModify, "Brush:Planar",	[Var, $brush_width], 0]
+
+	[IModify, "Brush:Inflat",	[Var, $brush_width], 0]
+
+	[IModify, "Brush:Smooth Stronger",	[Var, $brush_width], 0]
+	[IModify, "Brush:SmoothPeaks",	[Var, $brush_width], 0]
+	[IModify, "Brush:SmoothValleys",	[Var, $brush_width], 0]
+	[IModify, "Brush:Smooth",	[Var, $brush_width], 0]
+	[IModify, "Brush:TrimDynamic",	[Var, $brush_width], 0]
+	[IModify, "Brush:ZModeler",	[Var, $brush_width], 0]
+	[IModify, "Brush:Topology",	[Var, $brush_width], 0]
+	[IModify, "Brush:DamStandard",	[Var, $brush_width], 0]
+	[IModify, "Brush:SliceRect",	[Var, $brush_width], 0]
+
+
+//
+//]
+//[IButton, "resizeBrushButtons()" , "", [RoutineCall, resizeBrushButtons] ]

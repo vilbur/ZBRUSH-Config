@@ -1,0 +1,157 @@
+/** resizeButtons
+  *
+  */
+//[RoutineDef, resizeButtons
+//,
+	/*------------------------------------------------------------------------------
+		SIZES OF UI CONTROLS
+	--------------------------------------------------------------------------------*/
+	[VarSet, DEF,	24]
+	[VarSet, MIN,	28]
+	[VarSet, MID,	36]
+	[VarSet, BIG,	48]
+	
+	[VarSet, W1,	32]
+	[VarSet, W2,	48]
+	[VarSet, W3,	64]
+	[VarSet, W4,	96]
+	[VarSet, W5,	192]
+	[VarSet, FULL,	384]
+
+	/*------------------------------------------------------------------------------
+		MASK
+	--------------------------------------------------------------------------------*/
+	[IModify, "Tool:Masking:Create Alpha",	#W4,	#BIG ]
+	[IModify, "Tool:Masking:Mask By Alpha",	#W4, #BIG ]
+	[IModify, "Tool:Masking:Create Alpha",	#W4,	34 ]
+	[IModify, "Tool:Masking:ViewMask",	#W3,	#BIG ]
+	[IModify, "Tool:Masking:Inverse",	#W2,	#MID ]
+	[IModify, "Tool:Masking:Clear",	#W2,	#BIG ]
+	[IModify, "Tool:Masking:MaskByFeature",	#W2,	#BIG ]
+
+
+
+	[IModify, "~Extended:Masking: G R O W",	#W3, #MID ]
+	[IModify, "~Extended:Masking:S H R I N K",	#W3, #MID ]
+	[IModify, "~Extended:Masking:S H A R  P",	#W3, #MID ]
+	[IModify, "~Extended:Masking: B L U R",	#W3, #MID ]
+
+	/*------------------------------------------------------------------------------
+		SCRIPT
+	--------------------------------------------------------------------------------*/
+
+	[IModify, "Zscript:Load",	#W3,	#BIG ]
+	[IModify, "Zscript:Reload",	#W3,	#BIG ]
+	[IModify, "Zscript:Record",	#W3,	#BIG ]
+	[IModify, "Zscript:End Rec",	#W3,	#BIG ]
+	[IModify, "Zscript:Next",	#W3,	#BIG ]
+	[IModify, "Zscript:Previous",	#W3,	#BIG ]
+
+
+	/*------------------------------------------------------------------------------
+		GEOMETRY
+	--------------------------------------------------------------------------------*/
+	[IModify, "Tool:Geometry:Divide", 	#W3,	24]
+	[IModify, "Tool:Make PolyMesh3D",	#W4,	24]
+	[IModify, "Tool:SubTool:Split To Similar Parts", 	#W4,	24]
+	[IModify, "Tool:SubTool:Split To Parts",	#W4,	24]
+	[IModify, "Tool:SubTool:Make Boolean Mesh",	#W4 - 2,	24]
+
+	//[IModify, "Stroke:LazyMouse", 	0,	[Var, $BIG]]
+
+	[IModify, "Draw:Undo",	#W3,	#BIG ]
+	[IModify, "Draw:Redo",	#W3,	#BIG ]
+
+
+	/*------------------------------------------------------------------------------
+		BRUSH \ STROKE
+	--------------------------------------------------------------------------------*/
+	[IModify, "Brush:Auto Masking:Topological", 0,	#BIG ]
+
+
+
+	/*------------------------------------------------------------------------------
+		zREMESHER
+	--------------------------------------------------------------------------------*/ 
+	[IModify, "Tool:Geometry:Legacy", #W2,	#BIG ]
+
+	[IModify, "Tool:Geometry:FreezeBorder", #W4,	#MID ]
+
+	[IModify, "Tool:Geometry:Adapt", #W2,	#MID ]
+	[IModify, "Tool:Geometry:Double", #W2,	#MID ]
+	[IModify, "Tool:Geometry:Same", #W2,	#MID ]
+	[IModify, "Tool:Geometry:Half", #W2,	#MID ]
+	
+	
+	/*------------------------------------------------------------------------------
+		TOOL
+	--------------------------------------------------------------------------------*/
+	[IModify, "Tool:Deformation:Mirror",	#W2,	24]
+	
+	[IModify,"Tool:Visibility:Grow", #W2, #MID ]
+	[IModify,"Tool:Visibility:Shrink", #W2, #MID ]
+
+	[IModify,"Tool:Display Properties:Double",	#W2, #MID ]
+	[IModify,"Tool:Display Properties:Flip",	#W2, #MID ]
+	
+		
+
+	/*------------------------------------------------------------------------------
+		SUBTOOLS
+	--------------------------------------------------------------------------------*/
+
+	[IModify, "Tool:SubTool:Append",	#W3,	#MID ]
+	[IModify, "Zplugin:SubTool Master:MultiAppend",	#W3,	#MID ]
+
+
+	[IModify, "Tool:SubTool:Delete",	#W3,	#MID ]
+	[IModify, "Tool:SubTool:Del Other",	#W3,	#MID ]
+	[IModify, "Zplugin:SubTool Master:Merge",	#W3,	#MID ]
+	[IModify, "~Extended:SubTool:Multi",	#W3,	#MID ]
+	[IModify, "Zplugin:SubTool Master:Delete Invis",	#W3,	#MID ]
+
+
+	[IModify, "~Extended:SubTool:Rename",	#W3,	#MID ]
+	[IModify, "~Extended:SubTool:Suffix",	#W3,	#MID ]
+	[IModify, "~Extended:SubTool:Copy",	44,	#MID ]
+	[IModify, "~Extended:SubTool:Paste Name",	84,	#MID ]
+
+
+
+	[IModify, "Tool:SubTool:Copy",	#W2, #MID]
+	[IModify, "Tool:SubTool:Paste",	#W2, #MID]
+
+	[IModify, "Tool:SubTool:SelectUp",	#BIG ]
+	[IModify, "Tool:SubTool:SelectDown",	#BIG ]
+	[IModify, "Tool:SubTool:MoveUp",	#BIG ]
+	[IModify, "Tool:SubTool:MoveDown",	#BIG ]
+
+	/* Subtool visibility set buttons */
+	//[Loop, 9
+	//,
+	//	[IModify, [StrMerge, "Tool:SubTool:V", i],	0, #BIG ]
+	//,i]
+
+
+
+	[IModify, "Transform:Activate Symmetry",	#W4 - #W2 ,	24]
+	[IModify, "Transform:Solo", 96, 64]
+	
+	/*------------------------------------------------------------------------------
+		DECIMATION MASTER
+	--------------------------------------------------------------------------------*/
+
+	[IModify, "Zplugin:Decimation Master:Pre-process Current",	[Var, W4] - 4, #BIG ]
+	[IModify, "Zplugin:Decimation Master:Decimate Current",	[Var, W4] + 4, #BIG ]
+	[IModify, "Zplugin:Decimation Master:Freeze borders",	#W4, #BIG ]
+	[IModify, "Zplugin:Decimation Master:Keep UVs",	#W4, #BIG ]
+	[IModify, "Zplugin:Decimation Master:Delete Caches",	#W4, #BIG ]
+
+
+	[IModify,"Color:Gradient",	#W2, 24]
+	[IModify,"Color:Alternate",	#W2, 24]
+	
+
+//]
+
+//[RoutineCall, resizeButtons ]
