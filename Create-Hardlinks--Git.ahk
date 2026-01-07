@@ -14,9 +14,9 @@
   *
   */
 global $source_paths := [	"AppData/ZStartup"
-	,"ProgramFiles/ZScripts"
+	,"ProgramFiles/ZScripts"]
 
-						 ,"ProgramFiles/ZStartup/ZPlugs64/UI-Labels.zsc"]
+						 ;;;,"ProgramFiles/ZStartup/ZPlugs64/UI-Labels.zsc"]
 
 
 /** 2D Array of strings [ "{search}", "{repalce}" ]

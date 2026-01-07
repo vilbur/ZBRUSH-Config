@@ -18,6 +18,17 @@
 	[VarSet, W5,	192]
 	[VarSet, FULL,	384]
 
+
+	/*------------------------------------------------------------------------------
+		BRUSH
+	--------------------------------------------------------------------------------*/
+	[IModify, "Brush:Auto Masking:Topological", 0,	#MIN ]
+	
+	/*------------------------------------------------------------------------------
+		STROKE
+	--------------------------------------------------------------------------------*/
+	[IModify, "Stroke:LazyMouse", 0,	#MID ]
+
 	/*------------------------------------------------------------------------------
 		MASK
 	--------------------------------------------------------------------------------*/
@@ -27,14 +38,11 @@
 	[IModify, "Tool:Masking:ViewMask",	#W3,	#BIG ]
 	[IModify, "Tool:Masking:Inverse",	#W2,	#MID ]
 	[IModify, "Tool:Masking:Clear",	#W2,	#BIG ]
-	[IModify, "Tool:Masking:MaskByFeature",	#W2,	#BIG ]
 
-
-
-	[IModify, "~Extended:Masking: G R O W",	#W3, #MID ]
-	[IModify, "~Extended:Masking:S H R I N K",	#W3, #MID ]
-	[IModify, "~Extended:Masking:S H A R  P",	#W3, #MID ]
-	[IModify, "~Extended:Masking: B L U R",	#W3, #MID ]
+	[IModify, "Tool:Masking:MaskByFeature",	#W2 + 4,	#MID ]
+	[IModify, "Tool:Masking:Crease",	#W2,	#MID ]
+	[IModify, "Tool:Masking:Border",	#W2,	#MID ]
+	[IModify, "Tool:Masking:Groups",	#W2,	#MID ]
 
 	/*------------------------------------------------------------------------------
 		SCRIPT
@@ -57,18 +65,13 @@
 	[IModify, "Tool:SubTool:Split To Parts",	#W4,	24]
 	[IModify, "Tool:SubTool:Make Boolean Mesh",	#W4 - 2,	24]
 
+	[IModify, "Tool:Geometry:Del Hidden", 	#W4 ,	#MID ]
+	[IModify, "Tool:Geometry:Close Holes", 	#W4 ,	#MID ]
+	
 	//[IModify, "Stroke:LazyMouse", 	0,	[Var, $BIG]]
 
 	[IModify, "Draw:Undo",	#W3,	#BIG ]
 	[IModify, "Draw:Redo",	#W3,	#BIG ]
-
-
-	/*------------------------------------------------------------------------------
-		BRUSH \ STROKE
-	--------------------------------------------------------------------------------*/
-	[IModify, "Brush:Auto Masking:Topological", 0,	#MIN ]
-
-
 
 	/*------------------------------------------------------------------------------
 		zREMESHER
@@ -134,8 +137,14 @@
 
 
 
-	[IModify, "Transform:Activate Symmetry",	#W2 ,	#MID ]
-	[IModify, "Transform:Solo", 96, 64]
+	[IModify, "Transform:Activate Symmetry",	#W2 +2,	#MID ]
+	[IModify, "Transform:Solo", #W4, #BIG ]
+	
+	
+	/*------------------------------------------------------------------------------
+		RENDER
+	--------------------------------------------------------------------------------*/
+	[IModify, "Render:Render Booleans:Live Boolean", #W4, #BIG ]
 	
 	/*------------------------------------------------------------------------------
 		DECIMATION MASTER
@@ -150,6 +159,12 @@
 
 	[IModify,"Color:Gradient",	#W2, 24]
 	[IModify,"Color:Alternate",	#W2, 24]
+	
+	/*------------------------------------------------------------------------------
+		PREFERENCES
+	--------------------------------------------------------------------------------*/
+	[IModify, "Preferences:Config:Enable Customize",	#W4 + 16 , #BIG ]
+	[IModify, "Preferences:Config:Store Config",	#W4 - 16 , #MID ]
 	
 
 //]
