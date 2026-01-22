@@ -34,6 +34,7 @@
 	--------------------------------------------------------------------------------*/
 	[IModify, "Tool:Masking:Create Alpha",	#W4,	#BIG ]
 	[IModify, "Tool:Masking:Mask By Alpha",	#W4, #BIG ]
+	[IModify, "Tool:Masking:Mask By Cavity",	#W4, #MIN ]
 	[IModify, "Tool:Masking:Create Alpha",	#W4,	34 ]
 	[IModify, "Tool:Masking:ViewMask",	#W3,	#BIG ]
 	[IModify, "Tool:Masking:Inverse",	#W2,	#MID ]
@@ -61,6 +62,7 @@
 	--------------------------------------------------------------------------------*/
 	[IModify, "Tool:Geometry:Divide", 	#W3,	24]
 	[IModify, "Tool:Make PolyMesh3D",	#W4,	24]
+	
 	[IModify, "Tool:SubTool:Split To Similar Parts", 	#W4,	24]
 	[IModify, "Tool:SubTool:Split To Parts",	#W4,	24]
 	[IModify, "Tool:SubTool:Make Boolean Mesh",	#W4 - 2,	24]
@@ -97,6 +99,7 @@
 	[IModify,"Tool:Display Properties:Double",	#W2, #MID ]
 	[IModify,"Tool:Display Properties:Flip",	#W2, #MID ]
 	
+	[IModify,"Tool:Rigging:Bind Mesh", #W4, #MID ]
 		
 
 	/*------------------------------------------------------------------------------
@@ -104,14 +107,15 @@
 	--------------------------------------------------------------------------------*/
 
 	[IModify, "Tool:SubTool:Append",	#W3,	#MID ]
-	[IModify, "Zplugin:SubTool Master:MultiAppend",	#W3,	#MID ]
 
 
-	[IModify, "Tool:SubTool:Delete",	#W3,	#MID ]
-	[IModify, "Tool:SubTool:Del Other",	#W3,	#MID ]
-	[IModify, "Zplugin:SubTool Master:Merge",	#W3,	#MID ]
+	[IModify, "Tool:SubTool:Delete",	#W3,	#MIN - 4 ]
+	[IModify, "Tool:SubTool:Del Other",	#W3,	#MIN - 4 ]
+	[IModify, "Zplugin:SubTool Master:Delete Invis",	#W3,	#MIN - 4 ]
+	
+	[IModify, "Tool:SubTool:Duplicate",	#W3, #MIN]
+	[IModify, "Zplugin:SubTool Master:Merge",	#W3,	#MIN ]
 	[IModify, "~Extended:SubTool:Multi",	#W3,	#MID ]
-	[IModify, "Zplugin:SubTool Master:Delete Invis",	#W3,	#MID ]
 
 
 	[IModify, "~Extended:SubTool:Rename",	#W3,	#MID ]
@@ -120,9 +124,11 @@
 	[IModify, "~Extended:SubTool:Paste Name",	84,	#MID ]
 
 
+	[IModify, "Tool:SubTool:Copy",	#W2, #MIN]
 
-	[IModify, "Tool:SubTool:Copy",	#W2, #MID]
-	[IModify, "Tool:SubTool:Paste",	#W2, #MID]
+
+	[IModify, "Tool:SubTool:Copy",	#W2, #MIN]
+	[IModify, "Tool:SubTool:Paste",	#W2, #MIN]
 
 	[IModify, "Tool:SubTool:SelectUp",	#BIG ]
 	[IModify, "Tool:SubTool:SelectDown",	#BIG ]
@@ -155,6 +161,18 @@
 	[IModify, "Zplugin:Decimation Master:Freeze borders",	#W4, #BIG ]
 	[IModify, "Zplugin:Decimation Master:Keep UVs",	#W4, #BIG ]
 	[IModify, "Zplugin:Decimation Master:Delete Caches",	#W4, #BIG ]
+
+
+	/*------------------------------------------------------------------------------
+		UV MASTER
+	--------------------------------------------------------------------------------*/
+	//[IModify, "Zplugin:UV Master:  Unwrap",	#W2, #DEF ]
+	[IModify, "Zplugin:UV Master:Use Existing UV Seams",	#W2, #DEF ]
+
+
+	/*------------------------------------------------------------------------------
+		COLOR
+	--------------------------------------------------------------------------------*/
 
 
 	[IModify,"Color:Gradient",	#W2, 24]

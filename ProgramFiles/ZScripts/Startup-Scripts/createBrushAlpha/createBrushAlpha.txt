@@ -2,6 +2,7 @@
   */
 [RoutineDef, createBrushAlpha
 ,
+	//[Note, "createBrushAlpha",, 1]
 	[IFreeze,
 	 
 		/* LOAD TOOL */ 

@@ -2,48 +2,20 @@
 [IButton,Play,"Press to play this ZScript. ZScript can be aborted at anytime by pressing the ëescí key.",
 [IConfig,2022]
 
+	[VarSet, ZFILEUTILSDLL, "ZFileUtils64.dll"]
+	//[VarSet, file_path, [FileNameResolvePath, "\test.ahk" ]]
+	[VarSet, file_path, [FileNameResolvePath, "C:\GoogleDrive\ProgramsData\CG\ZBrush\Plugins\INSTALLED\Extended\ExtendedData\Ahk\cleanUpFolderQuickSave.ahk" ]]
 
- //[ShellExecute, [StrMerge, "notepad++.exe ", "\"" , 	[FileNameResolvePath, [StrMerge, ZBRUSH_ZScripts, "\\RECORDED-SCRIPT.txt"] ] , "\"" ] ]
-	//[FileNameSetNext, "ZBRUSH_ZScripts\RECORDED-SCRIPT.txt"]
-	//[IPress, ZScript:Load]
-
-//[Note,  [FileNameResolvePath, [StrMerge, ZBRUSH_ZScripts, " \\ RECORDED-SCRIPT.txt"]] ,, 0]
-[VarSet, inPath, "C:\\Users\\vilbur\\Documents\\ZBrush\\test.txt"]
-[VarSet, outPath, ""]
-[VarSet, i, 0]
-[VarSet, len, [StrLength, inPath]]
-
-[Loop, len,
-    [VarSet, ch, [StrExtract, inPath, i, 1]]
-    [VarSet, slash, [StrFromAsc, 92 ] ]
+	//[Note, file_path,, 0]
 	
-	[VarSet, characterIsSlash, (([StrLength, ch]==[StrLength, slash ]) && ([StrFind, ch, slash ] > -1))]
+	[FileExecute, ZFILEUTILSDLL, "LaunchAppWithFile",  #file_path]
+	
 
-	/*  */ 
-    [If,  #characterIsSlash == 1,
-        [VarSet, outPath, [StrMerge, outPath, "/"]]
-		
-	, // ELSE
-        [VarSet, outPath, [StrMerge, outPath, ch]]
-    ]
+	//[FileExecute, test.ahk,  ]
+	//[FileExecute, C:/GoogleDrive/ProgramsData/CG/ZBrush/Plugins/INSTALLED/Extended/ExtendedData/Ahk/test.ahk ]
+	//[FileExecute, C:\GoogleDrive\ProgramsData\CG\ZBrush\Plugins\INSTALLED\Extended\ExtendedData\Ahk\test.ahk ]
 
-    [VarInc, i]
-]
-
-[Note, #outPath]
-
-//[FileExecute, [FileNameResolvePath, [StrMerge, ZBRUSH_ZScripts, "\\ZFileUtils64.dll"]], "LaunchAppWithFile", 
-// 
-// //[StrMerge, "start notepad++.exe ", """" , 	[FileNameResolvePath, [StrMerge, ZBRUSH_ZScripts, "\RECORDED-SCRIPT.txt"] ] , """" ]
-// [StrMerge, "start notepad++.exe " , 	[FileNameResolvePath, [StrMerge, ZBRUSH_ZScripts, "\\RECORDED-SCRIPT.txt"] ]  ]
-// 
-//]
-
-
-////[VarSet, $ZFILE_UTILS_DLL, "ZFileUtils64.dll"]
-//[VarSet, $file_path, "Path\To\file.exe" ]
-//[VarSet, file_path, [FileNameResolvePath, [StrMerge, ZBRUSH_ZScripts, "\\ZFileUtils64.dll"]]]
-//[VarSet, err, [FileExecute, $ZFILE_UTILS_DLL, "LaunchAppWithFile",  #file_path]] // execute file
-//[If, err, [Note, "Error in execution",, 2] ]
-
+	
+ 
+ 
 ]/*End of ZScript*/

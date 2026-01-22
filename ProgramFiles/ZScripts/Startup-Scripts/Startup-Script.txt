@@ -9,7 +9,7 @@
 <zscriptinsert, "Startup-Scripts/Resize-Controls/resizeBrushButtons.txt">	// "./Resize-Controls/resizeBrushButtons.txt"
 <zscriptinsert, "Startup-Scripts/Resize-Controls/resizeSliders.txt">	// "./Resize-Controls/resizeSliders.txt"
 <zscriptinsert, "Startup-Scripts/Resize-Controls/resizeButtons.txt">	// "./Resize-Controls/resizeButtons.txt"
-<zscriptinsert, "Startup-Scripts/createBrushAlpha/createBrushAlpha.txt">	// "./createBrushAlpha/createBrushAlpha.txt"
+//< zscriptinsert, "Startup-Scripts/createBrushAlpha/createBrushAlpha.txt">	// "./createBrushAlpha/createBrushAlpha.txt"
 
 
 [RoutineCall, resizeSliders]
