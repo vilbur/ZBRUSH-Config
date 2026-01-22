@@ -8,29 +8,12 @@
 	//[IPress, ZScript:Load]
 
 //[Note,  [FileNameResolvePath, [StrMerge, ZBRUSH_ZScripts, " \\ RECORDED-SCRIPT.txt"]] ,, 0]
-[VarSet, inPath, "C:\\Users\\vilbur\\Documents\\ZBrush\\test.txt"]
-[VarSet, outPath, ""]
-[VarSet, i, 0]
-[VarSet, len, [StrLength, inPath]]
 
-[Loop, len,
-    [VarSet, ch, [StrExtract, inPath, i, 1]]
-    [VarSet, slash, [StrFromAsc, 92 ] ]
-	
-	[VarSet, characterIsSlash, (([StrLength, ch]==[StrLength, slash ]) && ([StrFind, ch, slash ] > -1))]
 
-	/*  */ 
-    [If,  #characterIsSlash == 1,
-        [VarSet, outPath, [StrMerge, outPath, "/"]]
-		
-	, // ELSE
-        [VarSet, outPath, [StrMerge, outPath, ch]]
-    ]
 
-    [VarInc, i]
-]
+[ISet, "Zplugin:Decimation Master:% of Decimation", 10 ]
 
-[Note, #outPath]
+[ISet, "Zplugin:Decimation Master:k Points", 999 ]
 
 //[FileExecute, [FileNameResolvePath, [StrMerge, ZBRUSH_ZScripts, "\\ZFileUtils64.dll"]], "LaunchAppWithFile", 
 // 

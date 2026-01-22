@@ -20,6 +20,7 @@
 	[IModify, Draw:Focal Shift, 	0, #MID ]
 	[IModify, Draw:Rgb Intensity,	0, #MID ]
 
+	[IModify, Brush:Auto Masking:Mask By Polygroups, #W2 ]
 	//[IModify, Stroke:AdjustLast, 	0, #MID ]
 
 
@@ -30,6 +31,10 @@
 	
 	[IModify, Tool:Geometry:AdaptiveSize, #W4,	#MID ]
 	[IModify, Tool:Geometry:Curves Strength, #W4,	#MID ]
+	
+	[IModify, Tool:Masking:Intensity, #W3 ]
+	//[IModify, Tool:Masking:Mask By Polygroups, #W3 ]
+	
 
 ]
 [IButton, "resizeSliders()" , "", [RoutineCall, resizeSliders] ]
