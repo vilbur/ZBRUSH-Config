@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Komodo Project File - DO NOT EDIT -->
-<<<<<<< HEAD:Z-Zbrush-Config.komodoproject
 <project id="a03907bf-4e7b-441e-8ea3-7422202c8e9c" kpf_version="5" name="Z-Zbrush-Config.komodoproject">
-=======
-<project id="a03907bf-4e7b-441e-8ea3-7422202c8e9c" kpf_version="5" name="Zbrush-Config.komodoproject">
->>>>>>> origin/main:zBrush-Config.komodoproject
 <file id="17cb2010-0d7c-4812-8b28-20ca5aa73795" idref="a03907bf-4e7b-441e-8ea3-7422202c8e9c" name="RECORDED-SCRIPT.txt" url="ProgramFiles/ZScripts/RECORDED-SCRIPT.txt">
 </file>
 <file id="5c04651a-726a-497f-8b0f-7cd6ef9b31ae" idref="a03907bf-4e7b-441e-8ea3-7422202c8e9c" name="TEST.txt" url="ProgramFiles/ZScripts/TEST.txt">
