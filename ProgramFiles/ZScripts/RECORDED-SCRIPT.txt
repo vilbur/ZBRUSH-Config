@@ -6,6 +6,7 @@
 	//[VarSet, file_path, [FileNameResolvePath, "\test.ahk" ]]
 	[VarSet, file_path, [FileNameResolvePath, "C:\GoogleDrive\ProgramsData\CG\ZBrush\Plugins\INSTALLED\Extended\ExtendedData\Ahk\cleanUpFolderQuickSave.ahk" ]]
 
+<<<<<<< HEAD
 	//[Note, file_path,, 0]
 	
 	[FileExecute, ZFILEUTILSDLL, "LaunchAppWithFile",  #file_path]
@@ -14,6 +15,33 @@
 	//[FileExecute, test.ahk,  ]
 	//[FileExecute, C:/GoogleDrive/ProgramsData/CG/ZBrush/Plugins/INSTALLED/Extended/ExtendedData/Ahk/test.ahk ]
 	//[FileExecute, C:\GoogleDrive\ProgramsData\CG\ZBrush\Plugins\INSTALLED\Extended\ExtendedData\Ahk\test.ahk ]
+=======
+ //[ShellExecute, [StrMerge, "notepad++.exe ", "\"" , 	[FileNameResolvePath, [StrMerge, ZBRUSH_ZScripts, "\\RECORDED-SCRIPT.txt"] ] , "\"" ] ]
+	//[FileNameSetNext, "ZBRUSH_ZScripts\RECORDED-SCRIPT.txt"]
+	//[IPress, ZScript:Load]
+
+//[Note,  [FileNameResolvePath, [StrMerge, ZBRUSH_ZScripts, " \\ RECORDED-SCRIPT.txt"]] ,, 0]
+
+
+
+[ISet, "Zplugin:Decimation Master:% of Decimation", 10 ]
+
+[ISet, "Zplugin:Decimation Master:k Points", 999 ]
+
+//[FileExecute, [FileNameResolvePath, [StrMerge, ZBRUSH_ZScripts, "\\ZFileUtils64.dll"]], "LaunchAppWithFile", 
+// 
+// //[StrMerge, "start notepad++.exe ", """" , 	[FileNameResolvePath, [StrMerge, ZBRUSH_ZScripts, "\RECORDED-SCRIPT.txt"] ] , """" ]
+// [StrMerge, "start notepad++.exe " , 	[FileNameResolvePath, [StrMerge, ZBRUSH_ZScripts, "\\RECORDED-SCRIPT.txt"] ]  ]
+// 
+//]
+
+
+////[VarSet, $ZFILE_UTILS_DLL, "ZFileUtils64.dll"]
+//[VarSet, $file_path, "Path\To\file.exe" ]
+//[VarSet, file_path, [FileNameResolvePath, [StrMerge, ZBRUSH_ZScripts, "\\ZFileUtils64.dll"]]]
+//[VarSet, err, [FileExecute, $ZFILE_UTILS_DLL, "LaunchAppWithFile",  #file_path]] // execute file
+//[If, err, [Note, "Error in execution",, 2] ]
+>>>>>>> origin/main
 
 	
  

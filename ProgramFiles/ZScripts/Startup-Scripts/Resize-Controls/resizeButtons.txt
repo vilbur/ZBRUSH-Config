@@ -109,6 +109,7 @@
 	[IModify, "Tool:SubTool:Append",	#W3,	#MID ]
 
 
+<<<<<<< HEAD
 	[IModify, "Tool:SubTool:Delete",	#W3,	#MIN - 4 ]
 	[IModify, "Tool:SubTool:Del Other",	#W3,	#MIN - 4 ]
 	[IModify, "Zplugin:SubTool Master:Delete Invis",	#W3,	#MIN - 4 ]
@@ -116,6 +117,14 @@
 	[IModify, "Tool:SubTool:Duplicate",	#W3, #MIN]
 	[IModify, "Zplugin:SubTool Master:Merge",	#W3,	#MIN ]
 	[IModify, "~Extended:SubTool:Multi",	#W3,	#MID ]
+=======
+	[IModify, "Tool:SubTool:Delete",	#W3,	#MIN ]
+	[IModify, "Tool:SubTool:Del Other",	#W3,	#MIN ]
+	[IModify, "Tool:SubTool:Duplicate",	#W3, #MIN]
+	[IModify, "Zplugin:SubTool Master:Merge",	#W3,	#MIN ]
+	[IModify, "~Extended:SubTool:Multi",	#W3,	#MID ]
+	[IModify, "Zplugin:SubTool Master:Delete Invis",	#W3,	#MIN ]
+>>>>>>> origin/main
 
 
 	[IModify, "~Extended:SubTool:Rename",	#W3,	#MID ]
@@ -126,7 +135,10 @@
 
 	[IModify, "Tool:SubTool:Copy",	#W2, #MIN]
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/main
 	[IModify, "Tool:SubTool:Copy",	#W2, #MIN]
 	[IModify, "Tool:SubTool:Paste",	#W2, #MIN]
 
